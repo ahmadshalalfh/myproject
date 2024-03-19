@@ -1,0 +1,46 @@
+<nav id="sidebar">
+    <div class="custom-menu">
+      <button type="button" id="sidebarCollapse" class="btn btn-primary">
+      </button>
+    </div>
+    <div class="img bg-wrap text-center py-4" style="background-image: url(images/bg_1.jpg);">
+      <div class="user-logo">
+        <div class="img" style="background-image: url(images/logo.jpg);">
+                    
+        </div>
+        <h3>{% if user.is_authenticated %}
+          <a href="#" class="d-block">{{ user.username }}</a>
+          {% else %}
+          <a href="{% url 'login' %}" style="color: skyblue;text-decoration: underline; ">تسجيل الدخول  </a>
+          <h5>,</h5>
+          <a  href="{% url 'reg' %}" style="color: skyblue;text-decoration: underline; ">انشاء حساب</a>
+          {% endif %}</h3>
+        
+      </div>
+    </div>
+          <ul class="list-unstyled components mb-5">
+            <li class="active">
+              <a href="{% url 'base' %}"><span class="fa fa-home mr-3"></span> الصفحه الرئيسيه</a>
+            </li>
+            <li>
+                <a href="{% url 'messages' %}"><span class="fa fa-download mr-3 notif"><small class="d-flex align-items-center justify-content-center">5</small></span> الرسائل</a>
+            </li>
+            <li>
+              {% if user.is_admin == 1 %}
+              <a href="{% url 'regemp' %}"><span class="fa fa-gift mr-3"></span> انشاء حساب لموظف</a>
+              {% endif %}
+            </li>
+            
+            <li>
+              <a href="#"><span class="fa fa-cog mr-3"></span> Settings</a>
+            </li>
+            <li>
+              <a href="#"><span class="fa fa-support mr-3"></span> Support</a>
+            </li>
+            <li>
+              {% if user.is_authenticated %}
+              <a href="{% url 'logout_view' %}"><span class="fa fa-sign-out mr-3"></span> Sign Out</a>
+            {% endif %}
+            </li>
+          </ul>
+  </nav>ssssss
